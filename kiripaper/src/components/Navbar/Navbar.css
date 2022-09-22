@@ -1,0 +1,21 @@
+.Navbar{
+    display: flex;
+    padding: 5px;
+    justify-content: space-around;
+    background-color: white;
+    
+}
+
+.Navbar .Logo{
+    padding: 5px;
+    font-weight: bold;
+}
+
+.Menu{
+    display: flex;
+    
+}
+
+.Menu li{
+    padding: 5px;
+}
