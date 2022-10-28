@@ -1,0 +1,34 @@
+.contenedorDetalle{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+
+.contenedorDetalle img{
+    height: 400px;
+    width: auto;
+    margin-left: 30px;
+}
+
+.contenedorDetalle .contenedorDetalleProducto{
+    margin-right: 100px;
+    margin-top: 60px;
+}
+
+.contenedorDetalle .contenedorDetalleProducto h2{
+    font-size: 50px;
+}
+
+.contenedorDetalle .contenedorDetalleProducto h3{
+    font-size: 30px;
+}
+
+.contenedorDetalle .contenedorDetalleProducto p{
+    font-size: 20px;
+}
+
+.contenedorDetalle .contenedorDetalleProducto .btn{
+    margin-top: 20px;
+    
+}

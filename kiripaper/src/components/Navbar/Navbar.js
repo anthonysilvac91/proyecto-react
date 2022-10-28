@@ -24,7 +24,7 @@ const Navbar = () =>{
                         <Link to={`/category/sticker`}>Stickers</Link>
                         </li>
                         <li>
-                        <Link to={`/category/organizadores`}>Organizadores</Link>
+                        <Link to={`/category/accesorios`}>Accesorios</Link>
                         </li>
                     </ul>
                 </div>
