@@ -1,45 +1,49 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const CartContext = createContext();
 
-const CartContextProvider = ( {children} ) => {
+const CartContextProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+  const [totalQuantity, setTotalQuantity] = useState (0)
 
-    const [cart, setCart] = useState([]);
+  const addItem = (productToAdd) => {
+    if (!isInCart(productToAdd.id)) {
+      setCart([...cart, productToAdd]);
+    }
+  };
 
-    const addItem = (productToAdd) => {
-        if(!isInCart(productToAdd.id)){
-    
-          setCart([...cart, productToAdd]);
-        }
-      };
-    
-      const removeItem = (id) =>{
-        const cartWithoutItem = cart.filter(prod => prod.id !== id)
-        setCart(cartWithoutItem)
-      }
-    
-      const isInCart = (id) =>{
-        return cart.some(prod=> prod.id ===id)
-      }
+  const isInCart = (id) => {
+    return cart.some((prod) => prod.id === id);
+  };
 
-        const totalQuantity = () =>{
-            const totalQuantity = 0
+  const removeItem = (id) => {
+    const cartWithoutItem = cart.filter((prod) => prod.id !== id);
+    setCart(cartWithoutItem);
+  };
 
-            cart.forEach(prod =>{
-                totalQuantity += prod.quantity
-            })
-        }
-      }
+  useEffect(()=>{
+    const totalQuantity = getTotalQuantity()
+    setTotalQuantity(totalQuantity)
 
-    return (
-
-        <CartContext.Provider value={{cart, addItem, removeItem}}>
-            {children}
-        </CartContext.Provider>
-        
-
-    )
+  }, [cart])
 
 
-export default CartContextProvider
+   const getTotalQuantity = () =>{
+    let totalQuantity = 0
+
+    cart.forEach(prod =>{
+        totalQuantity += prod.quantity
+    })
+    return totalQuantity
+    }
+
+  return (
+    <CartContext.Provider value={{ cart, addItem, removeItem, totalQuantity }}>
+      {children}
+    </CartContext.Provider>
+  );
+
+  
+};
+
+export default CartContextProvider;
