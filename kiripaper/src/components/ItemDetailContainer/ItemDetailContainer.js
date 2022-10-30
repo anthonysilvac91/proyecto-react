@@ -5,7 +5,8 @@ import {db} from '../../service/firebase'
 import { getDoc, doc } from 'firebase/firestore'
 
 
-const ItemDetailContainer = () => {
+
+const ItemDetailContainer = ({setCart}) => {
     const [product, setProduct] = useState()
     const { productId } = useParams()
     const [loading, setLoading] = useState (true)
@@ -32,7 +33,7 @@ const ItemDetailContainer = () => {
     return (
 
         <div className='ItemDetailContainer' >
-            <ItemDetail  {...product}/>
+            <ItemDetail  {...product} setCart={setCart} />
         </div>
     )
 }

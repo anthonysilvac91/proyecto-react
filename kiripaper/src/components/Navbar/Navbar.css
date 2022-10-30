@@ -19,3 +19,9 @@
 .Menu li{
     padding: 5px;
 }
+
+.ActiveOption{
+  
+   font-size: 17px;
+   color: #f3969a;
+}
