@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartContextProvider from "./context/CartContext";
 import { NotificationProvider } from "./notification/Notification";
+import Cart from "./components/Cart/Cart";
+
 
 
 
@@ -30,6 +32,7 @@ function App() {
                 path="/detail/:productId"
                 element={<ItemDetailContainer />}
               />
+              <Route path='/cart' element={<Cart/>} />
               <Route path="*" element={<h1>404 NOT FOUND</h1>} />
             </Routes>
           </BrowserRouter>
