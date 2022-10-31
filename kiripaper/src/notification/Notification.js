@@ -9,7 +9,7 @@ const Notification = ({msg}) =>{
       top: 60,
       right: 10,
       padding: '10px 20px 10px 20px',
-      background: 'green',
+      background: '#78c2ad',
       color: 'white',
   
     }

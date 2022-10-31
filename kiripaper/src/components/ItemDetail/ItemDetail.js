@@ -37,8 +37,8 @@ const ItemDetail = ({id, name, description, price, category, img, stock}) => {
           <h2> {name} </h2>
           <h3>$ {price} </h3>
           <p> {description} </p>
-          <h4> {category} </h4>
-          <div className="btn">
+          <h4> Categoria: {category} </h4>
+          <div className="itemBtn">
             {quantityToAdd === 0 ? (
               <ItemCount onAdd={handleOnAdd} stock={stock} initial={productAddedQuantity} />
             ) : (

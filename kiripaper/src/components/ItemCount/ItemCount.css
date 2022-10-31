@@ -1,0 +1,33 @@
+.btn{
+    background-color:#78c2ad;
+    width: 100px;
+    
+    font-size: 20px;
+    border-radius: 10px;
+    color: white;
+    margin-top: 10px;
+   
+    
+}
+
+.add{
+    font-size: 17px;
+    margin-top: 5px;
+    background-color:#78c2ad;
+    font-size: 20PX;
+    padding: 10PX;
+    color: white;
+    border-radius: 10PX;
+}
+
+.btnQuantity{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10PX;
+    margin-bottom: 10PX;
+    
+}
+
+h4{
+    font-size: 20px;
+}

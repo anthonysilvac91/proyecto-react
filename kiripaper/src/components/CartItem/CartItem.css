@@ -1,0 +1,21 @@
+.cartViewCard{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.itemCart{
+    width: 200px;
+    
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.btnCartItem{
+    background-color: #78c2ad;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2px;
+}
