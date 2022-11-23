@@ -16,7 +16,7 @@ const NavBar = () =>{
     
     
             getDocs(collectionRef).then(response =>{
-                console.log(response)
+                
     
                 const categoriesAdapted = response.docs.map(doc =>{
                     const data = doc.data()
@@ -27,7 +27,7 @@ const NavBar = () =>{
             
         }, [])
     
-        console.log(categories)
+        
 
         return(
             <nav>
