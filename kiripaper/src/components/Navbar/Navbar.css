@@ -1,25 +1,32 @@
-.Navbar{
+.navbar{
     display: flex;
     padding: 5px;
     justify-content: space-around;
     background-color: white;
+    align-items: center;
     
 }
 
-.Navbar .Logo{
+.navbar .Logo{
     padding: 5px;
     font-weight: bold;
 }
 
-.Menu{
+.navbar h2{
+    color: black;
+    text-transform: uppercase;
+}
+
+.menu{
     display: flex;
+    align-items: center;
     
 }
 
-.Menu li{
-    padding: 5px;
+.menu a{
+    margin: 0 10px ;
+    text-transform: uppercase;
 }
-
 .ActiveOption{
   
    font-size: 17px;
