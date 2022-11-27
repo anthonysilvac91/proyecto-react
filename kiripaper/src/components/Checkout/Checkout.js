@@ -1,28 +1,38 @@
+import './checkout.css'
 import { getDocs, addDoc, collection, where, query, documentId, writeBatch } from "firebase/firestore"
-import { useState, useContext } from "react"
-import { CartContext } from "../../context/CartContext"
+import { useState } from "react"
+import { useCart } from "../../context/CartContext"
 import { db } from "../../service/firebase"
-import { NotificationContext } from "../../notification/Notification"
+import { useNotification } from "../../notification/Notification"
+
 
 
 const Checkout =() =>{
     const [loading, setLoading] = useState(false)
-    const { cart, total, clearCart } = useContext(CartContext)
-    const {setNotification} = useContext(NotificationContext)
-
+    const { cart, total, clearCart } = useCart()
+    const {setNotification} = useNotification()
+    const [user, setUser] = useState([]) 
+    
+    const inputCapture = (e) => {
+        const {name, value} = e.target
+        setUser({...user, [name]:value})
+    }
+    
     const createOrder = async () =>{
         setLoading(true)
         try{
             const objOrder = {
                 buyer: {
-                    name: 'ss',
-                    phone: 'sss',
-                    email: 'sssss'
+                    name: user.name,
+                    phone: user.phone,
+                    email: user.email
         
                 },
                 items: cart,
                 total
             }
+
+           
     
             const ids = cart.map(prod => prod.id)
             const productsRef = collection(db,'products')
@@ -32,6 +42,8 @@ const Checkout =() =>{
     
             const batch = writeBatch(db)
             const outOfStock = []
+
+
     
             docs.forEach(doc => {
                 const dataDoc = doc.data()
@@ -50,23 +62,27 @@ const Checkout =() =>{
                 await batch.commit()
                 const orderRef = collection(db, 'orders')
                 const orderAdded = await addDoc(orderRef, objOrder)
+                
     
-                console.log("agregado")
+               
                 setNotification("Su orden ha sido generada con exito")
                 clearCart()
+
             }else{
-                console.log("no hay stock")
+                
             }
 
         }  catch (error){
-            console.log(error)
+            
         } finally{
             setLoading(false)
+            if(loading) {
+                return <h1>Su orden se esta generando...</h1>
+            }
+            
         }
 
-        if(loading) {
-            return <h1>Su orden se esta generando...</h1>
-        }
+        
 
 
     }
@@ -74,9 +90,26 @@ const Checkout =() =>{
    
     return(
         <>
-        <h1>Checkout</h1>
-        <button onClick={createOrder}>Agregar documento</button>
+        <h1>Ingrese sus datos para realizar la compra</h1>
+        <div className='formulario'>
+        <form>
+            <div className='inputContainer'>
+                  
+                <input type='text' name='name'  placeholder='Ingrese el nombre de usuario' onChange={inputCapture} value={user.name} />
+                  
+                <input type='text' name='phone'  placeholder='Ingrese el numero de telefono' onChange={inputCapture} value={user.phone} />
+                  
+                <input type='text' name='email'  placeholder='Ingrese su correo electronico' onChange={inputCapture} value={user.email} />
+
+            </div>
+        </form>
+        </div>
+        <button onClick={createOrder}>Ingresar Orden</button>
+        
+        
+       
         </>
+        
 
       
 
